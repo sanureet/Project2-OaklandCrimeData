@@ -45,9 +45,11 @@ To install the project follow these steps:
 ## Credits, tools and other references
 
 **Colaborators**
-Front End
-Project Leader
-BackEnd
+- Front End
+- Project Leader
+- BackEnd
+- ETL
+- Visualization
 
 **Third Party Assets**
 - HTML
