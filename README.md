@@ -1,6 +1,6 @@
 # Project 2 Oakland Crime Data
 
-## Table of contents
+## Table of Contents
 
 - [Oakland Crime Data](#oakland-crime-data)
   - [Table of contents](#table-of-contents)
