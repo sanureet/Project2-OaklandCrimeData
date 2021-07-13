@@ -2,13 +2,13 @@
 
 ## Table of contents
 
-- [Oakland Crime Data] (#oakland-crime-data)
-  - [Table of contents] (#table-of-contents)
-  - [The Challenge] (#the-challenge)
-  - [The Development Process] (#the-developement-process)
-  - [The Output] (#the-ouput)
-  - [Installation and Uage] (#installation-and-usage)
-  - [Credits, tools and other references] (credits-tools-and-other-references)
+- [Oakland Crime Data](#oakland-crime-data)
+  - [Table of contents](#table-of-contents)
+  - [The Challenge](#the-challenge)
+  - [The Development Process](#the-developement-process)
+  - [The Output](#the-ouput)
+  - [Installation and Uage](#installation-and-usage)
+  - [Credits, tools and other references](credits-tools-and-other-references)
 
 ## The Challenge
 
