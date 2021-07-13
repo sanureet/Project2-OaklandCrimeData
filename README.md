@@ -50,5 +50,13 @@ Project Leader
 BackEnd
 
 **Third Party Assets**
-
+- HTML
+- CSS
+- JavaScript
+- Bootstrap
+- Python
+- PostgreSQL
+- Google Cloud Platform *if we deceide to use it
+- d3js
+- plotly
 List assests
