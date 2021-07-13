@@ -8,7 +8,7 @@
   - [The Development Process](#the-developement-process)
   - [The Output](#the-ouput)
   - [Installation and Uage](#installation-and-usage)
-  - [Credits, tools and other references](credits-tools-and-other-references)
+  - [Credits, tools and other references](#credits-tools-and-other-references)
 
 ## The Challenge
 
