@@ -34,7 +34,7 @@ Create a Full Stack webpage that visualizes crime data with the following featur
 ## The Output
 
 
-**User stories**
+**User Stories**
 
 
 **The application**
