@@ -14,7 +14,7 @@
 
 Create a Full Stack webpage that visualizes crime data with the following features:
 - [x] Project falls in one of 4 tracks (NEED TO Pick one)
-<p>        a)	A custom “creative” D3.js project (i.e. nonstandard graph or chart)
+<p>   a)	A custom “creative” D3.js project (i.e. nonstandard graph or chart)
 <p>   b)	A combination of web scraping and Leaflet or plotly</p>
 <p>   c)	A dashboard page with multiple charts that update from the same data</p>
 <p>   d)	A “thick” server that performs multiple manipulations on data in a database prior to visualization (must be approved)</p>
