@@ -1,6 +1,6 @@
 # Project 2 Oakland Crime Data
 
-## Table of contents
+## Table of Contents
 
 - [Oakland Crime Data](#oakland-crime-data)
   - [Table of contents](#table-of-contents)
@@ -45,10 +45,20 @@ To install the project follow these steps:
 ## Credits, tools and other references
 
 **Colaborators**
-Front End
-Project Leader
-BackEnd
+- Front End
+- Project Leader
+- BackEnd
+- ETL
+- Visualization
 
 **Third Party Assets**
-
+- HTML
+- CSS
+- JavaScript
+- Bootstrap
+- Python
+- PostgreSQL
+- Google Cloud Platform *if we deceide to use it
+- d3js
+- plotly
 List assests
