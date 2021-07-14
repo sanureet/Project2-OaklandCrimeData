@@ -14,7 +14,6 @@
 
 Create a Full Stack webpage that visualizes crime data with the following features:
 - [x] Project falls in one of 4 tracks (NEED TO Pick one)
-      - * Test
 - [x] Backed by SQL database
 - [x] Use existing public data set for the database
 - [x] Python Flask-powered API
