@@ -28,7 +28,7 @@ Create a Full Stack webpage that visualizes crime data with the following featur
 - [x] Final visualization should ideally include at least three views
 
 
-## The development process
+## The Development Process
 
 
 ## The Output
