@@ -27,19 +27,16 @@ Create a Full Stack webpage that visualizes crime data with the following featur
 - [x] Include some level of user-driven interaction, e.g. menus, dropdowns
 - [x] Final visualization should ideally include at least three views
 
-
 ## The Development Process
-
 
 ## The Output
 
 
 **User Stories**
 
-
 **The application**
 ![Screenshot1]()
-![Screenshot1]()
+![Screenshot2]()
 
 ## Installation and Usage
 
