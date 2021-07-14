@@ -1,6 +1,6 @@
 # Project 2 Oakland Crime Data
 
-## Table of contents
+## Table of Contents
 
 - [Oakland Crime Data](#oakland-crime-data)
   - [Table of contents](#table-of-contents)
@@ -12,8 +12,12 @@
 
 ## The Challenge
 
-Create a HTML page that visualizes crime data with the following features:
-- [x] [Project falls in one of 4 tracks (NEED TO Pick one)
+Create a Full Stack webpage that visualizes crime data with the following features:
+- [x] Project falls in one of 4 tracks (NEED TO Pick one)
+- A custom “creative” D3.js project (i.e. nonstandard graph or chart)
+- A combination of web scraping and Leaflet or plotly
+- A dashboard page with multiple charts that update from the same data
+- A “thick” server that performs multiple manipulations on data in a database prior to visualization (must be approved)
 - [x] Backed by SQL database
 - [x] Use existing public data set for the database
 - [x] Python Flask-powered API
@@ -45,10 +49,20 @@ To install the project follow these steps:
 ## Credits, tools and other references
 
 **Colaborators**
-Front End
-Project Leader
-BackEnd
+- Front End
+- Project Leader
+- BackEnd
+- ETL
+- Visualization
 
 **Third Party Assets**
-
+- HTML
+- CSS
+- JavaScript
+- Bootstrap
+- Python
+- PostgreSQL
+- Google Cloud Platform *if we deceide to use it
+- d3js
+- plotly
 List assests
