@@ -10,7 +10,7 @@
   - [Installation and Uage](#installation-and-usage)
   - [Credits, tools and other references](#credits-tools-and-other-references)
 
-## The Challenge
+## The Challenge [remove after project completed]
 
 Create a Full Stack webpage that visualizes crime data with the following features:
 - [x] Project falls in one of 4 tracks (NEED TO Pick one)
@@ -27,7 +27,9 @@ Create a Full Stack webpage that visualizes crime data with the following featur
 - [x] Include some level of user-driven interaction, e.g. menus, dropdowns
 - [x] Final visualization should ideally include at least three views
 
-## The Development Process
+## About
+Oakland Crime
+The Development Process
 
 ## The Output
 
