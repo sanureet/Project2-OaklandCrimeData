@@ -45,7 +45,7 @@ var myMap = L.map("map", {
 L.control.layers(baseMaps).addTo(myMap);
 
 // Use this link to get the geojson data.
-var link = "static/data/opd_boundaries-geojson.json";
+var link = "../static/data/opd_boundaries-geojson.json";
 
 // Function that will determine the color of a neighborhood based on the borough it belongs to
 function chooseColor(CP_BEAT) {
@@ -102,7 +102,7 @@ d3.json(link).then(data => {
 });
 
 // Grab the data with d3
-d3.json( "static/data/oakland_crime_data.json").then( function( response) {
+d3.json( "../static/data/oakland_crime_data.json").then( function( response) {
 
   // Create a new marker cluster group
   var markers = L.markerClusterGroup();
