@@ -7,7 +7,8 @@ from flask import (
     render_template,
     jsonify,
     request,
-    redirect)
+    redirect,
+    send_file)
 
 from sqlalchemy import create_engine
 
@@ -70,6 +71,13 @@ def crime_db():
 
     # return json to the client
     return crime_json
+
+#function to render dc_maps in the index.html
+@app.route('/templates/base_map.html')
+def show_map():
+
+    return send_file('templates/base_map.html')
+
 
 # run the app in debug mode
 if __name__ == "__main__":
