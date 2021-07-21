@@ -78,6 +78,11 @@ def show_map():
 
     return send_file('templates/base_map.html')
 
+#function to render dc_maps in the index.html
+@app.route('/templates/just-crime.html')
+def show_crime():
+
+    return send_file('templates/just-crime.html')
 
 # run the app in debug mode
 if __name__ == "__main__":
