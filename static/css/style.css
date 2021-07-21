@@ -12,8 +12,8 @@ body {
 
 #map {
   position: relative;
-  height: inherit;
-  width: inherit;
+  height: 600px;
+  width: auto;
 }
 
 
