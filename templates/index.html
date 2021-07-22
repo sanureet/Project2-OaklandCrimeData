@@ -27,7 +27,9 @@
  <!-- Custom CSS & JS -->
  <link href='../static/css/style.css' rel='stylesheet' type='text/css'>
  <script type='text/javascript' src="../static/js/config.js"></script>
+ <script type='text/javascript' src="../static/js/choropleth.js"></script>
  <script type='text/javascript' src="../static/js/crimemap.js" defer></script> <!-- Note: We are deferring the execuion of this script because it is dependent on the map container -->
+ 
 
 </head>
 
@@ -79,11 +81,35 @@
     <!-- Map and Filters -->
     <div class="row">
       <div class="col-md-10">
-          <!-- Map container--> test
+          <!-- Map container-->
           <div id="map"></div>
       </div>
       <div class="col-md-2">
-        (Filters placeholder here)
+        <h4>Data Filters</h4>
+        Some text here...
+        <p>
+        <b>Year</b><br/>
+        <input class="form-check-input" type="radio" name="year" id="year2020" checked>
+        <label class="form-check-label" for="year2020">2020</label>
+
+        <input class="form-check-input" type="radio" name="year" id="year2019">
+        <label class="form-check-label" for="year2019">2019</label>
+
+        <p>
+
+        <b>Crime Category</b><br/>
+        <input class="form-check-input" type="radio" name="crimecategory" id="violent-radio" checked>
+        <label class="form-check-label" for="violent-radio">Violent Crime</label><br/>
+
+        <input class="form-check-input" type="radio" name="crimecategory" id="property-radio">
+        <label class="form-check-label" for="property-radio">Property Crime</label><br/>
+
+        <input class="form-check-input" type="radio" name="crimecategory" id="other-radio">
+        <label class="form-check-label" for="other-radio">Other Crime</label><p>
+
+        <input type='button' class="btn btn-primary btn-large" id='filter-button' value='Filter'></input>
+
+
       </div>
     </div>
     <!-- Charting visualizations -->
