@@ -60,6 +60,8 @@ var myMap = L.map("map", {
   ]
 });
 
+// setting up the legend so that the scope is global;
+var legend;
 
 /****************************************
  ******Adding Neighborhoods Layer********
@@ -90,7 +92,7 @@ var myMap = L.map("map", {
 //     style: function(feature) {
 //       return {
 //         color: "white",
-//         // Call the chooseColor function to decide which color to color our neighborhood (color based on borough)
+//         // Call the chooseColor function to decide which color to color our neighborhood (color based on neighborhood)
 //         fillColor: chooseColor(features.properties.NAME),
 //         fillOpacity: 0.3,
 //         weight: 1.5
@@ -127,88 +129,213 @@ var myMap = L.map("map", {
 // });
 
 
+  /****************************************
+   *************User Filters***************
+  ****************************************/
+
+function filterCrime() {
+
+  var filter_year = document.querySelector('input[name="year"]:checked').value;
+  var filter_crime_category = document.querySelector('input[name="crimecategory"]:checked').value;
+  
+  //clear map -- this is lazy *smile*
+  //d3.select('#map').html('');
+  
+  try{
+    myMap.removeControl(legend);
+  }
+  catch{;
+    console.log('An error has occurred while trying to remove the legend.')
+  }
+
+  populateBarChart(filter_year, filter_crime_category);
+  populateDataTable(filter_year, filter_crime_category);
+  loadMap(filter_year, filter_crime_category);
+}
+
+
+/****************************************
+ **********Bar Chart Function************
+ ****************************************/
+
+function populateBarChart(filter_year, filter_crime_category){
+
+  d3.json('/api/data/crime_summary').then(data => {    
+
+    filteredData = data.filter(d => d['years'] == filter_year)
+                        .filter(d => d['category'] == filter_crime_category);
+
+    filteredData.sort((a, b) => b['count'] - a['count']);
+    filteredData.reverse();
+    
+    console.log(filteredData);
+
+    var crime_type = filteredData.map(d => d['crimetype']);
+    var incident_count = filteredData.map(d => d['count']);
+
+    var plotdata = [{
+      type: 'bar',
+      x: incident_count,
+      y: crime_type,
+      orientation: 'h'
+    }];
+
+    var layout = {
+      autosize: true,
+      yaxis: {
+        automargin: true
+      }
+    }
+    
+    Plotly.newPlot('crime-bar', plotdata, layout);
+
+
+  })
+
+}
+
+/****************************************
+ ***************Data Table****************
+ ****************************************/
+
+function populateDataTable(filter_year, filter_crime_category) {
+  
+  var tbody = d3.select('#crime-tbody');
+  tbody.html('');
+  
+  d3.json('api/data').then(data => {
+
+  filteredData = data.filter(d => d['years'] == filter_year)
+  .filter(d => d['category'] == filter_crime_category);
+
+  filteredData.forEach(row => {
+
+    tr = tbody.append('tr');
+
+    tr.append('td').text(row['casenumber'])
+    tr.append('td').text(row['description'])
+    tr.append('td').text(row['address'])
+    // consider using object.entries
+        
+  });
+
+
+
+  });
+
+}
+
+
+
 /****************************************
  **************Choropleth****************
  ****************************************/
 
+function loadMap(filter_year, filter_crime_category) {
+  // Load in geojson data
+  var geoData = "../static/data/neighborhoods_with_crime_data.geojson";
 
-// Load in geojson data
-var geoData = "../static/data/neighborhoods_with_crime_data.geojson";
+  var geojson;
 
-var geojson;
+  // Grab data with d3
+  d3.json(geoData).then(function(data) {
 
-// Grab data with d3
-d3.json(geoData).then(function(data) {
+    // Preview geoJSON
+    console.log(data);
 
-  // Preview geoJSON
-  console.log(data);
+    // Create a new choropleth layer
+    geojson = L.choropleth(data, {
 
-  // Create a new choropleth layer
-  geojson = L.choropleth(data, {
+      // Define what  property in the features to use
+      neighborhood: "NAME",
 
-    // Define what  property in the features to use
-    neighborhood: "NAME",
+      valueProperty: `${filter_year} ${filter_crime_category}`,
 
-    valueProperty: '2020 Violent',
+      // Set color scale
+      scale: ["#ffffb2", "#b10026"],
 
-    // Set color scale
-    scale: ["#ffffb2", "#b10026"],
+      // Number of breaks in step range
+      steps: 10,
 
-    // Number of breaks in step range
-    steps: 10,
+      // q for quartile, e for equidistant, k for k-means
+      mode: "q",
+      style: {
+        // Border color
+        color: "#fff",
+        weight: 1,
+        fillOpacity: 0.7
+      },
 
-    // q for quartile, e for equidistant, k for k-means
-    mode: "q",
-    style: {
-      // Border color
-      color: "#fff",
-      weight: 1,
-      fillOpacity: 0.8
-    },
+      // Binding a pop-up to each layer
+      onEachFeature: function(feature, layer) {
 
-    // Binding a pop-up to each layer
-    onEachFeature: function(feature, layer) {
+        // Set mouse events to change map styling
+        layer.on({
+          // When a user's mouse touches a map feature, the mouseover event calls this function, that feature's opacity changes to 90% so that it stands out
+          mouseover: function(event) {
+            layer = event.target;
+            layer.setStyle({
+              fillOpacity: 0.9
+            });
+          },
+          // When the cursor no longer hovers over a map feature - when the mouseout event occurs - the feature's opacity reverts back to 60%
+          mouseout: function(event) {
+            layer = event.target;
+            layer.setStyle({
+              fillOpacity: 0.7
+            });
+          },
+          // // When a feature (neighborhood) is clicked, it is enlarged to fit the screen
+          // click: function(event) {
+          //   myMap.fitBounds(event.target.getBounds());
+          // }
+        });
 
-      // this is hardcoded. change this later to be dynamic
-      year = '2020';
-      crime_other = feature['properties'][`${year} Other`]
-      crime_property = feature['properties'][`${year} Property`]
-      crime_violent = feature['properties'][`${year} Violent`]
+        
+        year = filter_year;
+        crime_other = feature['properties'][`${year} Other`]
+        crime_property = feature['properties'][`${year} Property`]
+        crime_violent = feature['properties'][`${year} Violent`]
 
-      layer.bindPopup(`<b>${feature.properties.NAME} <hr/>` +
-                      `${year} Violent Crimes: ${crime_violent}` + 
-                      `<br>${year} Property Crimes: ${crime_property}` +
-                      `<br>${year} Other Crimes: ${crime_other}` 
-                    );
-          }
-  }).addTo(myMap);
+        layer.bindPopup(`<b>${feature.properties.NAME} <hr/>` +
+                        `${year} Violent Crimes: ${crime_violent}` + 
+                        `<br>${year} Property Crimes: ${crime_property}` +
+                        `<br>${year} Other Crimes: ${crime_other}` 
+                      );
+            }
+    }).addTo(myMap);
 
-  // Set up the legend
-  var legend = L.control({ position: "bottomright" });
-  legend.onAdd = function() {
-    var div = L.DomUtil.create("div", "info legend");
-    var limits = geojson.options.limits;
-    var colors = geojson.options.colors;
-    var labels = [];
+    // Set up the legend
+    legend = L.control({ position: "bottomright" });
+    legend.onAdd = function() {
+      var div = L.DomUtil.create("div", "info legend");
+      var limits = geojson.options.limits;
+      var colors = geojson.options.colors;
+      var labels = [];
 
-    // Add min & max
-    var legendInfo = "<h1>Crime Instances</h1>" +
-      "<div class=\"labels\">" +
-        "<div class=\"min\">" + limits[0] + "</div>" +
-        "<div class=\"max\">" + limits[limits.length - 1] + "</div>" +
-      "</div>";
+      // Add min & max
+      var legendInfo = "<h6>Crime Instances</h6>" +
+        "<div class=\"labels\">" +
+          "<div class=\"min\">" + limits[0] + "</div>" +
+          "<div class=\"max\">" + limits[limits.length - 1] + "</div>" +
+        "</div>";
 
-    div.innerHTML = legendInfo;
+      div.innerHTML = legendInfo;
 
-    limits.forEach(function(limit, index) {
-      labels.push("<li style=\"background-color: " + colors[index] + "\"></li>");
-    });
+      limits.forEach(function(limit, index) {
+        labels.push("<li style=\"background-color: " + colors[index] + "\"></li>");
+      });
 
-    div.innerHTML += "<ul>" + labels.join("") + "</ul>";
-    return div;
-  };
+      div.innerHTML += "<ul>" + labels.join("") + "</ul>";
+      return div;
+    };
 
-  // Adding legend to the map
-  legend.addTo(myMap);
+    // Adding legend to the map
+    legend.addTo(myMap);
 
-});
+  });
+}
+
+
+// Run filterCrime function by default, which calls loadMap()
+filterCrime();
