@@ -24,6 +24,9 @@
  <!-- D3 JS -->
  <script src="https://d3js.org/d3.v7.min.js"></script>
 
+ <!-- Plotly JS -->
+ <script src="https://cdn.plot.ly/plotly-2.2.0.min.js"></script>
+
  <!-- Custom CSS & JS -->
  <link href='../static/css/style.css' rel='stylesheet' type='text/css'>
  <script type='text/javascript' src="../static/js/config.js"></script>
@@ -89,25 +92,25 @@
         Some text here...
         <p>
         <b>Year</b><br/>
-        <input class="form-check-input" type="radio" name="year" id="year2020" checked>
+        <input class="form-check-input" type="radio" name="year" id="year2020" value='2020' checked>
         <label class="form-check-label" for="year2020">2020</label>
 
-        <input class="form-check-input" type="radio" name="year" id="year2019">
+        <input class="form-check-input" type="radio" name="year" id="year2019" value='2019'>
         <label class="form-check-label" for="year2019">2019</label>
 
         <p>
 
         <b>Crime Category</b><br/>
-        <input class="form-check-input" type="radio" name="crimecategory" id="violent-radio" checked>
+        <input class="form-check-input" type="radio" name="crimecategory" id="violent-radio" value='Violent' checked>
         <label class="form-check-label" for="violent-radio">Violent Crime</label><br/>
 
-        <input class="form-check-input" type="radio" name="crimecategory" id="property-radio">
+        <input class="form-check-input" type="radio" name="crimecategory" id="property-radio" value='Property'>
         <label class="form-check-label" for="property-radio">Property Crime</label><br/>
 
-        <input class="form-check-input" type="radio" name="crimecategory" id="other-radio">
+        <input class="form-check-input" type="radio" name="crimecategory" id="other-radio" value='Other'>
         <label class="form-check-label" for="other-radio">Other Crime</label><p>
 
-        <input type='button' class="btn btn-primary btn-large" id='filter-button' value='Filter'></input>
+        <input type='button' class="btn btn-primary btn-large" id='filter-button' value='Filter' onclick='filterCrime()'></input>
 
 
       </div>
@@ -115,13 +118,24 @@
     <!-- Charting visualizations -->
     <div class="row">
       <div class="col-md-6">
+        <div id='crime-bar'></div>
       </div>
       <div class="col-md-6">
       </div>
     </div>
+
     <!-- Data tables -->
     <div class="row">
       <div class="col-md-12">
+        <table id='crime-table' class='table table-hover'>
+          <thead>
+            <th>Case Number</th>
+            <th>Description</th>
+            <th>Address</th>
+          </thead>
+          <tbody id='crime-tbody'>
+          </tbody>
+        </table>
       </div>
     </div>
 
