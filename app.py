@@ -87,7 +87,7 @@ def crime_summary():
             crimetype,
             count(*) as count
         FROM
-            crimetype
+            crimedata
         GROUP BY
             years,
             category,
