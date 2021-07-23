@@ -61,7 +61,7 @@ def crime_db():
     conn = engine.connect()
   
     # query the database using Pandas
-    crime_df = pd.read_sql('SELECT * FROM lat', con=conn)
+    crime_df = pd.read_sql('SELECT * FROM crimedata_nb', con=conn)
 
     # convert the result to json
     crime_json = crime_df.to_json(orient='records')
@@ -87,7 +87,7 @@ def crime_summary():
             crimetype,
             count(*) as count
         FROM
-            crimedata
+            crimedata_nb
         GROUP BY
             years,
             category,
