@@ -54,6 +54,14 @@ var legend;
    *************User Filters***************
   ****************************************/
 
+
+function destroyTableAndFilterCrime() {
+  var crime_table = $('#crime-table').DataTable();
+  crime_table.destroy();
+
+  filterCrime();
+}
+
 function filterCrime() {
 
   var filter_year = document.querySelector('input[name="year"]:checked').value;
@@ -155,63 +163,44 @@ function populateBarChart(filter_year, filter_crime_category){
 
 function populateDataTable(filter_year, filter_crime_category) {
 
-  existing_table = d3.select('#crime-table').node();
-  existing_table.remove();
-
-  // use d3.select to identify the container div
-  // append a table to that div and give it the right class names
-  // append a thead to that table
-  // append a the necessary th tage to the thead
-  // append a tbody to the table with the correct id 
-
-  /*
-          <table id='crime-table' class="table table-striped table-bordered table-sm">
-          <thead>
-            <th>Case Number</th>
-            <th>Description</th>
-            <th>Address</th>
-          </thead>
-          <tbody id='crime-tbody'>
-          </tbody>
-        </table>
-  */
-
-
-
-  
-  var tbody = d3.select('#crime-tbody');
+  tbody = d3.select('#crime-tbody');
   tbody.html('');
-  
+
   d3.json('api/data').then(data => {
 
-  filteredData = data.filter(d => d['years'] == filter_year)
-  .filter(d => d['category'] == filter_crime_category);
+    console.log('populating data table');
 
-  filteredData.forEach(row => {
+    filteredData = data.filter(d => d['years'] == filter_year)
+    .filter(d => d['category'] == filter_crime_category);
 
-    tr = tbody.append('tr');
+    console.log(filteredData);
 
-    tr.append('td').text(row['casenumber'])
-    tr.append('td').text(row['description'])
-    tr.append('td').text(row['address'])
-    // consider using object.entries
-        
-    });
+    filteredData.forEach(row => {
+
+      tr = tbody.append('tr');
+
+      tr.append('td').text(row['casenumber'])
+      tr.append('td').text(row['description'])
+      tr.append('td').text(row['address'])
+          
+      });
 
   });
+  
 
-   // Attach MDBootstrao the Crime table with a 5 second timeout
+  // Attach MDBootstrao the Crime table with a 5 second timeout
+  console.log('timer started');
+  setTimeout(function() {
 
-   setTimeout(function() {
+   $(document).ready(function () {
+     $('#crime-table').DataTable({
+       "pagingType": "full_numbers" // "simple" option for 'Previous' and 'Next' buttons only
+     });
+     $('.dataTables_length').addClass('bs-select');
+   });
+   console.log('timer finished');
 
-    $(document).ready(function () {
-      $('#crime-table').DataTable({
-        "pagingType": "full_numbers" // "simple" option for 'Previous' and 'Next' buttons only
-      });
-      $('.dataTables_length').addClass('bs-select');
-    });
-
-   }, 5000);
+  }, 5000);
 
 }
 
