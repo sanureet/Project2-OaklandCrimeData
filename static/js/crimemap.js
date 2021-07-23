@@ -117,19 +117,19 @@ function populateBarChart(filter_year, filter_crime_category){
 
  function populatePieChart(filter_year, filter_crime_category){
 
-  d3.json('/api/data').then(data => {    
+  d3.json('/api/data/crime_nb_summary').then(data => {    
 
     filteredData = data.filter(d => d['years'] == filter_year)
                         .filter(d => d['category'] == filter_crime_category);
 
-    filteredData.sort((a, b) => b['count'] - a['count']).slice(0,10).reverse();
-
+    filteredData.sort((a, b) => b['count'] - a['count']);
+    // filteredData.reverse();
     
     
     console.log(filteredData);
 
-    var crime_nb = filteredData.map(d => d['NAME']);
-    var incident_count = filteredData.map(d => d['count']);
+    var crime_nb = filteredData.map(d => d['nb_name']);
+    var incident_count = filteredData.map(d => d['count']).slice(0,10);
 
     var plotdata = [{
       values: incident_count,
@@ -141,7 +141,7 @@ function populateBarChart(filter_year, filter_crime_category){
     var layout = {
       height: 400,
       width: 500,
-      showlegend: false
+      // showlegend: false
       };
     
     Plotly.newPlot('crime-pie', plotdata, layout);
@@ -176,13 +176,13 @@ function populateDataTable(filter_year, filter_crime_category) {
 
   });
 
-  // Table styling & pagination
-  (document).ready(function () {
-    ('#crime-table').DataTable({
-      "pagingType": "full_numbers"
-    });
-    ('.dataTables_length').addClass('bs-select');
-  });
+  // // Table styling & pagination
+  // (document).ready(function () {
+  //   ('#crime-table').DataTable({
+  //     "pagingType": "full_numbers"
+  //   });
+  //   ('.dataTables_length').addClass('bs-select');
+  // });
 
 }
 
