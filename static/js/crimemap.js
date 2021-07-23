@@ -37,96 +37,17 @@ var baseMaps = {
   Dark: dark
 };
 
-var layers = {
-  PETTY_THEFT: new L.LayerGroup(),
-  STOLEN_VEHICLE: new L.LayerGroup(),
-  ROBBERY: new L.LayerGroup(),
-  FELONY_ASSAULT: new L.LayerGroup(),
-  FORCIBLE_RAPE: new L.LayerGroup()
-};
-
-
 // Create map object and set default layers
 var myMap = L.map("map", {
   center: [37.8044, -122.2712],
   zoom: 12,
   layers: [
-    street,
-    layers.PETTY_THEFT,
-    layers.STOLEN_VEHICLE,
-    layers.ROBBERY,
-    layers.FELONY_ASSAULT,
-    layers.FORCIBLE_RAPE
+    street
   ]
 });
 
 // setting up the legend so that the scope is global;
 var legend;
-
-/****************************************
- ******Adding Neighborhoods Layer********
- ****************************************/
-
-// // Pass our map layers into our layer control
-// // Add the layer control to the map
-// L.control.layers(baseMaps).addTo(myMap);
-
-// // Use this link to get the geojson data.
-// var link = "../static/data/neighborhoods_with_crime_data.geojson";
-
-// // Function that will determine the color of a neighborhood based on the borough it belongs to
-// function chooseColor(NAME) {
-//   switch (NAME) {
-//   case "Montclair":
-//     return "skyblue";
-//   default:
-//     return "skyblue";
-//   }
-// }
-
-// // Grabbing our GeoJSON data..
-// d3.json(link).then(data => {
-//   // Creating a geoJSON layer with the retrieved data
-//   L.geoJson(data, {
-//     // Style each feature (in this case a neighborhood)
-//     style: function(feature) {
-//       return {
-//         color: "white",
-//         // Call the chooseColor function to decide which color to color our neighborhood (color based on neighborhood)
-//         fillColor: chooseColor(features.properties.NAME),
-//         fillOpacity: 0.3,
-//         weight: 1.5
-//       };
-//     },
-//     // Called on each feature
-//     onEachFeature: function(feature, layer) {
-//       // Set mouse events to change map styling
-//       layer.on({
-//         // When a user's mouse touches a map feature, the mouseover event calls this function, that feature's opacity changes to 90% so that it stands out
-//         mouseover: function(event) {
-//           layer = event.target;
-//           layer.setStyle({
-//             fillOpacity: 0.9
-//           });
-//         },
-//         // When the cursor no longer hovers over a map feature - when the mouseout event occurs - the feature's opacity reverts back to 50%
-//         mouseout: function(event) {
-//           layer = event.target;
-//           layer.setStyle({
-//             fillOpacity: 0.5
-//           });
-//         },
-//         // When a feature (neighborhood) is clicked, it is enlarged to fit the screen
-//         click: function(event) {
-//           myMap.fitBounds(event.target.getBounds());
-//         }
-//       });
-//       // Giving each feature a pop-up with information pertinent to it
-//       layer.bindPopup(`<h1>Neighborhood:&nbsp;${features.properties.NAME}</h1><hr/><h2 style='text-align: center;'>Neighborhood:&nbsp;${features.properties.NAME}</h2>`);
-
-//     }
-//   }).addTo(myMap);
-// });
 
 
   /****************************************
@@ -137,9 +58,6 @@ function filterCrime() {
 
   var filter_year = document.querySelector('input[name="year"]:checked').value;
   var filter_crime_category = document.querySelector('input[name="crimecategory"]:checked').value;
-  
-  //clear map -- this is lazy *smile*
-  //d3.select('#map').html('');
   
   try{
     myMap.removeControl(legend);
@@ -188,8 +106,6 @@ function populateBarChart(filter_year, filter_crime_category){
     }
     
     Plotly.newPlot('crime-bar', plotdata, layout);
-
-
   })
 
 }
@@ -219,12 +135,9 @@ function populateDataTable(filter_year, filter_crime_category) {
         
   });
 
-
-
   });
 
 }
-
 
 
 /****************************************
@@ -335,7 +248,6 @@ function loadMap(filter_year, filter_crime_category) {
 
   });
 }
-
 
 // Run filterCrime function by default, which calls loadMap()
 filterCrime();
