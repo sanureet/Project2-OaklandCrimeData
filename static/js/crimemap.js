@@ -67,6 +67,7 @@ function filterCrime() {
   }
 
   populateBarChart(filter_year, filter_crime_category);
+  populatePieChart(filter_year, filter_crime_category);
   populateDataTable(filter_year, filter_crime_category);
   loadMap(filter_year, filter_crime_category);
 }
@@ -111,6 +112,44 @@ function populateBarChart(filter_year, filter_crime_category){
 }
 
 /****************************************
+ **********Pie Chart Function************
+ ****************************************/
+
+ function populatePieChart(filter_year, filter_crime_category){
+
+  d3.json('/api/data').then(data => {    
+
+    filteredData = data.filter(d => d['years'] == filter_year)
+                        .filter(d => d['category'] == filter_crime_category);
+
+    filteredData.sort((a, b) => b['count'] - a['count']).slice(0,10).reverse();
+
+    
+    
+    console.log(filteredData);
+
+    var crime_nb = filteredData.map(d => d['NAME']);
+    var incident_count = filteredData.map(d => d['count']);
+
+    var plotdata = [{
+      values: incident_count,
+      labels: crime_nb,
+      type: 'pie',
+      textinfo: 'none'
+    }];
+
+    var layout = {
+      height: 400,
+      width: 500,
+      showlegend: false
+      };
+    
+    Plotly.newPlot('crime-pie', plotdata, layout);
+  })
+
+}
+
+/****************************************
  ***************Data Table****************
  ****************************************/
 
@@ -135,6 +174,14 @@ function populateDataTable(filter_year, filter_crime_category) {
         
   });
 
+  });
+
+  // Table styling & pagination
+  (document).ready(function () {
+    ('#crime-table').DataTable({
+      "pagingType": "full_numbers"
+    });
+    ('.dataTables_length').addClass('bs-select');
   });
 
 }
@@ -219,7 +266,7 @@ function loadMap(filter_year, filter_crime_category) {
     }).addTo(myMap);
 
     // Set up the legend
-    legend = L.control({ position: "bottomright" });
+    legend = L.control({ position: "bottomleft" });
     legend.onAdd = function() {
       var div = L.DomUtil.create("div", "info legend");
       var limits = geojson.options.limits;
@@ -248,6 +295,10 @@ function loadMap(filter_year, filter_crime_category) {
 
   });
 }
+
+// Pass our map layers into our layer control
+// Add the layer control to the map
+L.control.layers(baseMaps).addTo(myMap);
 
 // Run filterCrime function by default, which calls loadMap()
 filterCrime();
