@@ -154,6 +154,30 @@ function populateBarChart(filter_year, filter_crime_category){
  ****************************************/
 
 function populateDataTable(filter_year, filter_crime_category) {
+
+  existing_table = d3.select('#crime-table').node();
+  existing_table.remove();
+
+  // use d3.select to identify the container div
+  // append a table to that div and give it the right class names
+  // append a thead to that table
+  // append a the necessary th tage to the thead
+  // append a tbody to the table with the correct id 
+
+  /*
+          <table id='crime-table' class="table table-striped table-bordered table-sm">
+          <thead>
+            <th>Case Number</th>
+            <th>Description</th>
+            <th>Address</th>
+          </thead>
+          <tbody id='crime-tbody'>
+          </tbody>
+        </table>
+  */
+
+
+
   
   var tbody = d3.select('#crime-tbody');
   tbody.html('');
@@ -172,17 +196,22 @@ function populateDataTable(filter_year, filter_crime_category) {
     tr.append('td').text(row['address'])
     // consider using object.entries
         
-  });
+    });
 
   });
 
-  // // Table styling & pagination
-  // (document).ready(function () {
-  //   ('#crime-table').DataTable({
-  //     "pagingType": "full_numbers"
-  //   });
-  //   ('.dataTables_length').addClass('bs-select');
-  // });
+   // Attach MDBootstrao the Crime table with a 5 second timeout
+
+   setTimeout(function() {
+
+    $(document).ready(function () {
+      $('#crime-table').DataTable({
+        "pagingType": "full_numbers" // "simple" option for 'Previous' and 'Next' buttons only
+      });
+      $('.dataTables_length').addClass('bs-select');
+    });
+
+   }, 5000);
 
 }
 
