@@ -57,14 +57,13 @@
     <div class="row">
       <div class="col-md-12">
         <div class="jumbotron">
-          <h2>
-            Oakland Crime Watch!
-          </h2>
+          <h2>Ill Eagle <img src="../static/Images/Eagle.png" class = "logo" alt="DB"/>Crime Watch</h2>
           <p>
-            This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.
-          </p>
-          <p>
+            <h4>Analyzing Crime, So You Can Too</h4>
+          <!-- </p>
+          <p> -->
             <a class="btn btn-primary btn-large" href="api/data">API Endpoint</a>
+            <a class="btn btn-primary btn-large" href="api/data/crime_nb_summary">Neighborhood Summary</a>
           </p>
         </div>
       </div>
@@ -78,42 +77,42 @@
           <div id="map"></div>
       </div>
       <div class="col-md-2">
-        <h4>Data Filters</h4>
-        Some text here...
+        <h5><b>Data Filters</b></h5>
         <p>
-        <b>Year</b><br/>
-        <input class="form-check-input" type="radio" name="year" id="year2020" value='2020' checked>
-        <label class="form-check-label" for="year2020">2020</label>
-          <br/>
-        <input class="form-check-input" type="radio" name="year" id="year2019" value='2019'>
-        <label class="form-check-label" for="year2019">2019</label>
-
+          <b>Year</b><br/>
+            <input class="form-check-input" type="radio" name="year" id="year2020" value='2020' checked>
+            <label class="form-check-label" for="year2020">2020</label>
+              <br/>
+            <input class="form-check-input" type="radio" name="year" id="year2019" value='2019'>
+            <label class="form-check-label" for="year2019">2019</label>
         <p>
+          <b>Crime Category</b><br/>
+            <input class="form-check-input" type="radio" name="crimecategory" id="violent-radio" value='Violent' checked>
+            <label class="form-check-label" for="violent-radio">Violent Crime</label><br/>
 
-        <b>Crime Category</b><br/>
-        <input class="form-check-input" type="radio" name="crimecategory" id="violent-radio" value='Violent' checked>
-        <label class="form-check-label" for="violent-radio">Violent Crime</label><br/>
+            <input class="form-check-input" type="radio" name="crimecategory" id="property-radio" value='Property'>
+            <label class="form-check-label" for="property-radio">Property Crime</label><br/>
 
-        <input class="form-check-input" type="radio" name="crimecategory" id="property-radio" value='Property'>
-        <label class="form-check-label" for="property-radio">Property Crime</label><br/>
+            <input class="form-check-input" type="radio" name="crimecategory" id="other-radio" value='Other'>
+            <label class="form-check-label" for="other-radio">Other Crime</label><p>
 
-        <input class="form-check-input" type="radio" name="crimecategory" id="other-radio" value='Other'>
-        <label class="form-check-label" for="other-radio">Other Crime</label><p>
-
-        <input type='button' class="btn btn-primary btn-large" id='filter-button' value='Filter' onclick='destroyTableAndFilterCrime()'></input>
-
-
+          <input type='button' class="btn btn-primary btn-large" id='filter-button' value='Filter' onclick='destroyTableAndFilterCrime()'></input>
       </div>
     </div>
+    <br/>
+
     <!-- Charting visualizations -->
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-md-6" style="text-align: center;">
+        <h5><b>Crime Type Ranking</b></h5>
         <div id='crime-bar'></div>
       </div>
-      <div class="col-md-6">
+      <div class="col-md-6" style="text-align: center;">
+        <h5><b>Top 10 Neighborhoods with Crime Category Incidents</b></h5>
         <div id='crime-pie'></div>
       </div>
     </div>
+    <br/>
 
     <!-- Data tables -->
     <div class="row">
@@ -131,6 +130,7 @@
     </div>
 
   </div>
+  <br/>
   <!-- End of Main Container -->
 
 
@@ -142,7 +142,11 @@
 <!-- Plugin file -->
 <script src="./static/mdbootstrap/js/addons/datatables.min.js"></script>
 
-
+<!-- Footer-->
+<div id="footer">
+  <p>© 2021 John Chan, Sanureet Bhullar, Jackson Freese, Matt Jensen, Veerpal Sanga.
+    Confidential and Proprietary. All Rights Reserved. Special thanks to Dartanion Williams.</p>
+</div>
 </body>
 
 
