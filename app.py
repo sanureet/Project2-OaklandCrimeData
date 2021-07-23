@@ -110,17 +110,42 @@ def crime_summary():
     # return json to the client
     return crime_json
 
-#function to render dc_maps in the index.html
-@app.route('/templates/base_map.html')
-def show_map():
+# route to view data
+@app.route("/api/data/crime_nb_summary")
+def crime_nb_summary():
+    # connect to db engine
+    conn = engine.connect()
+  
+    # write query 
+    query = '''
+        SELECT
+            years,
+            category,
+            nb_name,
+            count(*) as count
+        FROM
+            crimedata_nb
+        GROUP BY
+            years,
+            category,
+            nb_name
+        ORDER BY 
+            years,
+            category,
+            nb_name
+    '''
 
-    return send_file('templates/base_map.html')
+    # query the database using Pandas
+    crime_df = pd.read_sql(query, con=conn)
 
-#function to render dc_maps in the index.html
-@app.route('/templates/just-crime.html')
-def show_crime():
+    # convert the result to json
+    crime_json = crime_df.to_json(orient='records')
 
-    return send_file('templates/just-crime.html')
+    # close the db connection
+    conn.close()
+
+    # return json to the client
+    return crime_json
 
 # run the app in debug mode
 if __name__ == "__main__":
