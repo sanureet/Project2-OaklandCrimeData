@@ -61,7 +61,6 @@ To install the project follow these steps:
 - Bootstrap
 - Python
 - PostgreSQL
-- Google Cloud Platform *if we deceide to use it
 - d3js
 - plotly
 List assests
