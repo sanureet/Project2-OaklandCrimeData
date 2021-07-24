@@ -48,11 +48,11 @@ To install the project follow these steps:
 ## Credits, tools and other references
 
 **Colaborators**
-- Front End
-- Project Leader
-- BackEnd
-- ETL
-- Visualization
+- John Chan
+- Sanureet Bhullar
+- Jackson Freese
+- Matt Jensen
+- Veerpal Sanga
 
 **Third Party Assets**
 - HTML
