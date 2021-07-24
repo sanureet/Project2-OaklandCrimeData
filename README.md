@@ -58,6 +58,7 @@ To install the project follow these steps:
 - HTML
 - CSS
 - JavaScript
+- geoJSON
 - Bootstrap
 - Python
 - PostgreSQL
