@@ -61,6 +61,9 @@ To install the project follow these steps:
 - Bootstrap
 - Python
 - PostgreSQL
-- d3js
+- d3.js
+- Leaflet
 - plotly
+- Jquery
+- Material Design Bootstrap
 List assests
