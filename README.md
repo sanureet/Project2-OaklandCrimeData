@@ -28,7 +28,7 @@ Create a Full Stack webpage that visualizes crime data with the following featur
 - [x] Final visualization should ideally include at least three views
 
 
-## The development process
+## The Development Process
 
 
 ## The Output
@@ -46,9 +46,18 @@ Create a Full Stack webpage that visualizes crime data with the following featur
 
 To install the project follow these steps:
 
-## Credits, tools and other references
 
-**Colaborators**
+## Lessons Learned
+
+- JS File Setup - Knowing when and how to utilize functions
+- Geospatial Join: Visualizing the join to scale choropleth colors based on concentration of crime
+- JQuery Bootstrap 
+- Filtering and pagination
+- JS Library Usage: which links are relevant/applicable
+
+## Credits, Tools and Other References
+
+**Collaborators**
 - Front End
 - Project Leader
 - BackEnd
@@ -62,7 +71,7 @@ To install the project follow these steps:
 - Bootstrap
 - Python
 - PostgreSQL
-- Google Cloud Platform *if we deceide to use it
 - d3js
 - plotly
-List assests
+- JQuery Material Design
+- Leaflet
