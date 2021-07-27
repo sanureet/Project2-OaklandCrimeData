@@ -45,8 +45,9 @@ The Development Process
 
 To install the project follow these steps:
 Clone the repo and install the dependencies.
-<pre> git clone https://github.com/CityCop/Map
-cd Map
+<pre>git clone https://github.com/CityCop/Map
+<span class="pl-c1">cd</span>
+<p>Map</p>
 </pre>
 
 ## Credits, tools and other references
