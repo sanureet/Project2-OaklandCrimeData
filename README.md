@@ -47,8 +47,10 @@ To install the project follow these steps:
 
 1. Install PostgreSQL https://www.postgresql.org/download/
 2. Clone the repo and install the dependencies.
-<pre>git clone https://github.com/speedracer05/Project2-OaklandCrimeData
+```bash
+git clone https://github.com/speedracer05/Project2-OaklandCrimeData
 cd Map</pre>
+```
 
 ```bash
 $ pip install gmaps
