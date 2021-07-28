@@ -44,7 +44,9 @@ The Development Process
 
 
 To install the project follow these steps:
-Clone the repo and install the dependencies.
+
+1. Install PostgreSQL https://www.postgresql.org/download/
+2. Clone the repo and install the dependencies.
 <pre>git clone https://github.com/speedracer05/Project2-OaklandCrimeData
 <p>cd Map</p></pre>
 
@@ -62,7 +64,7 @@ $ pip install SQLAlchemy
 
 ## Credits, tools and other references
 
-**Colaborators**
+**Collaborators**
 - John Chan
 - Sanureet Bhullar
 - Jackson Freese
@@ -70,16 +72,15 @@ $ pip install SQLAlchemy
 - Veerpal Sanga
 
 **Third Party Assets**
-- HTML
-- CSS
-- JavaScript
-- geoJSON
+- JSON
+- Pandas 0.25.3
+- Requests 2.5.1
+- SQLAlchemy 1.4.20
+- geoJSON 2.5.0
 - Bootstrap
-- Python
-- PostgreSQL
 - d3.js
 - Leaflet
 - plotly
 - Jquery
 - Material Design Bootstrap
-List assests
+- PostgreSQL 13.2
