@@ -45,8 +45,20 @@ The Development Process
 
 To install the project follow these steps:
 Clone the repo and install the dependencies.
-<pre>git clone https://github.com/CityCop/Map
+<pre>git clone https://github.com/speedracer05/Project2-OaklandCrimeData
 <p>cd Map</p></pre>
+
+```bash
+$ pip install gmaps
+$ pip install js
+$ pip install d3
+$ pip install geojson
+$ pip install plotly
+$ pip install leaflet
+$ pip install jquery
+$ pip install bootstrap4
+$ pip install SQLAlchemy
+```
 
 ## Credits, tools and other references
 
