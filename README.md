@@ -41,15 +41,24 @@ The Development Process
 ![Screenshot2]()
 
 ## Installation and Usage
-
+Mapbox is a location data platform that powers map and location services. We used Mapbox to map geocoordinates of Oakland crimes. You will need to create an account in order to create access tokens for the Mapbox api. https://docs.mapbox.com/help/tutorials/get-started-tokens-api/
 
 To install the project follow these steps:
 
 1. Install PostgreSQL https://www.postgresql.org/download/
 2. Clone the repo and install the dependencies.
+3. Create config.py file for THE PostgreSQL DB. Add:
+db_user = 'YOUR USERNAME'
+db_password = 'YOUR PASSWORD'
+db_host = 'localhost'
+db_port = '5432'
+db_name = 'crime_db'
+then place file in static > py folder
+
+
 ```bash
 git clone https://github.com/speedracer05/Project2-OaklandCrimeData
-cd Map</pre>
+cd Map
 ```
 
 ```bash
