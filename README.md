@@ -12,29 +12,18 @@
 
 ## The Challenge [remove after project completed]
 
-Create a Full Stack webpage that visualizes crime data with the following features:
-- [x] Project falls in one of 4 tracks (NEED TO Pick one)
-- A custom “creative” D3.js project (i.e. nonstandard graph or chart)
-- A combination of web scraping and Leaflet or plotly
+In this project, we created a Full Stack webpage that visualizes the city of Oakland, California crime data derived from public sources. It is an dynamic website that pulls data from a SQL database, filters the information based on user input. The data is presented as map layers including Oakland neighborhoods, as well as crime yptes that are plotted using geo-coordinates. 
+
+Here are key attributes of the project:
+- A “thick” SQL server that performs multiple manipulations on data in a database prior to visualization
 - A dashboard page with multiple charts that update from the same data
-- A “thick” server that performs multiple manipulations on data in a database prior to visualization (must be approved)
-- [x] Backed by SQL database
-- [x] Use existing public data set for the database
-- [x] Python Flask-powered API
-- [x] HTML/CSS for the front-end
-- [x] Includes at least one JS library not covered in lecture
-- [x] Powered by a data set with at least 100 records
-- [x] Include some level of user-driven interaction, e.g. menus, dropdowns
-- [x] Final visualization should ideally include at least three views
+- Python Flask-powered API
+- HTML/CSS for the front-end
+- User-driven interaction
 
 ## About
 Oakland Crime
 The Development Process
-
-## The Output
-
-
-**User Stories**
 
 **The application**
 ![Screenshot1]()
