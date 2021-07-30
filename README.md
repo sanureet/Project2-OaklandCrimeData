@@ -4,27 +4,27 @@
 
 - [Oakland Crime Data](#oakland-crime-data)
   - [Table of contents](#table-of-contents)
-  - [The Challenge](#the-challenge)
+  - [Description](#description)
   - [The Development Process](#the-developement-process)
   - [The Output](#the-ouput)
   - [Installation and Uage](#installation-and-usage)
   - [Credits, tools and other references](#credits-tools-and-other-references)
 
-## The Challenge [remove after project completed]
+## Description
 
-In this project, we created a Full Stack webpage that visualizes the city of Oakland, California crime data derived from public sources. It is an dynamic website that pulls data from a SQL database, filters the information based on user input. The data is presented as map layers including Oakland neighborhoods, as well as crime yptes that are plotted using geo-coordinates. 
+In this project, a Full Stack webpage was created to visualize the city of Oakland, California's crime data for years 2019 and 2020. It is useful for understanding the types and number of crimes committed in the various Oakland neighborhoods. The dynamic webpage pulls data from a SQL database, and presents the data as map layers over a map of the city. The map layers include Oakland neighborhoods, and crime types. The crime data is plotted using a cloropleth map that uses differences in color shading, within the various neighborhoods, to indicate the number of crimes in those areas. Clicking on each neighborhood displays the crimes associated with that particular area.
 
-Here are key attributes of the project:
-- A “thick” SQL server that performs multiple manipulations on data in a database prior to visualization
-- A dashboard page with multiple charts that update from the same data
+## Key Features
+Key attributes of the project:
+- A “thick” SQL server performs multiple manipulations, on data in a database, prior to visualization
+- A dashboard page with three charts that update from the same data
 - Python Flask-powered API
 - HTML/CSS for the front-end
-- User-driven interaction
+- User-driven interaction radio buttons
+- PostgreSQL database back-end to serve up data
 
-## About
-Oakland Crime
-The Development Process
-
+### The Development Process
+Crime data was pulled from the City of Oakland's Crime Watch Data respository, and truncated to years 2019-2020. Jupyter Notebook was then used to set up the connection to our Postgres db, set up the data tables and confirm that the tables were written to Postgres. 
 **The application**
 ![Screenshot1]()
 ![Screenshot2]()
@@ -76,6 +76,7 @@ $ pip install SQLAlchemy
 - Pandas 0.25.3
 - Requests 2.5.1
 - SQLAlchemy 1.4.20
+- Psycopg2
 - geoJSON 2.5.0
 - Bootstrap
 - d3.js
