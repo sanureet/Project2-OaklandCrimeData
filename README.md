@@ -24,7 +24,23 @@ Key attributes of the project:
 - PostgreSQL database back-end to serve up data
 
 ### The Development Process
-Crime data was pulled from the City of Oakland's Crime Watch Data respository, and truncated to years 2019-2020. Jupyter Notebook was then used to set up the connection to our Postgres db, set up the data tables and confirm that the tables were written to Postgres. 
+Crime data was pulled from the City of Oakland's Crime Watch Data respository, and truncated to years 2019-2020. 
+Jupyter Notebook was then used to set up the connection to our Postgres db, set up the data tables and confirm that the tables were written to Postgres. 
+An index.html page was created with a basic layout using layitout.com to configure the container, rows and columns that would hold the 4 visualizations. 
+A Python Flask App  "app.py" was created within which routes were designated to render the index.html page and the postgres db. 
+Another Jupyter Notebook was created to read in the flask app data route and merge this with the neigbhorhoods polygon data geojson file which outlines the Oakland neighborhoods. 
+This was done by converting the crime data route into a geodataframe (with the gpd.GeoDataFrame function to pull the lat & lng points) and then merged this and the neighborhood geodataframes with the gpd.sjoin function. 
+Next, a javascript file was created "crimemap.js" to create visuals and render them within the html page. 
+Created and called multiple functions within the javascript that were connected to ids within the html file: 
+	1) A function to load the map by reading in the merged geodata and applying choropleth layer to show concentration of the crime data for each neighbhorhood.
+	2) A function to create a horizontal bar chart - utilized the plotly library 
+	3) A function to create a pie chart - utilized the plotly library 
+	4) A function to create a data table - utilized the JQuery - Material Design Bootstrap
+	5) A function to apply filters
+
+
+
+
 **The application**
 ![Screenshot1]()
 ![Screenshot2]()
