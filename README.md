@@ -41,10 +41,6 @@ Created and called multiple functions within the javascript that were connected 
 
 
 
-**The application**
-![Screenshot1]()
-![Screenshot2]()
-
 ## Installation and Usage
 Mapbox is a location data platform that powers map and location services. We used Mapbox to map geocoordinates of Oakland crimes. You will need to create an account in order to create access tokens for the Mapbox api. https://docs.mapbox.com/help/tutorials/get-started-tokens-api/
 
